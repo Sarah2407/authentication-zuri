@@ -10,7 +10,7 @@ const PORT = 3000;
 mongoose.connect(process.env.USERS_URL, {useNewUrlParser: true});
 
 app.use(bodyParser.json());
-app.use("/", routes);
+app.use("", routes);
 
 mongoose.connection.once('open', () => {
   console.log("Database connected");

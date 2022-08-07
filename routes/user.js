@@ -5,7 +5,7 @@ const auth = require('../middleware/auth');
 
 const usersController = require('../controllers/usersController');
 
-router.post('api/register', usersController.registerUser);
+router.post('/api/register', usersController.registerUser);
 
 router.post('api/auth/login', 
         [

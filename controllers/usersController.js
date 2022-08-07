@@ -8,21 +8,23 @@ const { SECRET } = process.env;
 
 
 exports.registerUser = async (req, res) => {
-    const { email, password: plainPassword } = req.body
+    const { password: plainPassword } = req.body
     const password = bcrypt.hash(plainPassword, 10)
 
     try {
-        await User.create({
+        const user = await User.create({
             firstname,
             lastname,
             email,
             password,
             userRole
         })
-        console.log("User created successfully");
+        console.log("User created successfully", user);
     } catch (error) {
-        res.json({status: errror})
+        res.json({status: "error"})
+        console.log(req.body)
     }
+
 }
 
 //@route    GET api/auth
