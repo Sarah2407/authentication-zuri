@@ -2,15 +2,15 @@ require('dotenv').config();
 const express = require('express');
 const app = express();
 const bodyParser = require("body-parser");
-// const tasks = require("./controllers/todoController");
+const users = require("./controllers/usersController");
 const mongoose = require('mongoose');
-// const routes = require("./routes/todoRoutes");
-const PORT = 3000;
+const routes = require("./routes/user");
+const PORT = 3000; 
 
 mongoose.connect(process.env.USERS_URL, {useNewUrlParser: true});
 
 app.use(bodyParser.json());
-// app.use("/", routes);
+app.use("/", routes);
 
 mongoose.connection.once('open', () => {
   console.log("Database connected");
@@ -21,5 +21,5 @@ mongoose.connection.once('open', () => {
 
 
 app.listen(PORT, () => {
-    console.log(`server is listening on https://localhost:${PORT}`);
+    console.log(`server is listening on http://localhost:${PORT}`);
 });
